@@ -100,7 +100,7 @@ print(region_names)
 
 def find(name):
     name = name.split("_")
-    name = name[2]
+    name = name[3]
     for item in regions:
         for na in region_names[item]:
             if na == name:
@@ -125,8 +125,8 @@ for item in regions:
     clear_dir("fid/fake/"+item)
     clear_dir("fid/real/"+item)
 
-exp_name = "test1026_pix2pix_sat_all"
-path = "/home/host/pytorch-CycleGAN-and-pix2pix/results/{}/test_latest/images/".format(exp_name)
+exp_name = "test_1213"
+path = "/home/jayinnn/vae-pix2pix-terrain-generator/results/{}/val_latest/images/".format(exp_name)
 
 i = 0
 for filename in sorted(os.listdir(path)):

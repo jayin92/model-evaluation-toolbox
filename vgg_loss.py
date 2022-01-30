@@ -48,8 +48,8 @@ class VGGPerceptualLoss(torch.nn.Module):
         return loss
 
 VGG = VGGPerceptualLoss()
-exp_name = "test1025_hei_all_1-29"
-path = "/home/host/pytorch-CycleGAN-and-pix2pix/results/{}/test_latest/images/".format(exp_name)
+exp_name = "test_1213"
+path = "/home/jayinnn/vae-pix2pix-terrain-generator/results/{}/val_latest/images/".format(exp_name)
 
 
 path = "./"

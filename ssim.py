@@ -4,6 +4,7 @@ from tqdm import tqdm
 
 from skimage import data, img_as_float
 from skimage.metrics import structural_similarity as ssim
+from skimage.metrics import peak_signal_noise_ratio as psnr
 from skimage.metrics import mean_squared_error
 from skimage import io
 
@@ -19,7 +20,8 @@ n = len(os.listdir(path+"real"))
 print(n)
 # print(exp_name)
 
-res = 0
+res_ssim = 0
+res_psnr = 0
 
 fake = ""
 real = ""
@@ -28,11 +30,13 @@ for filename in tqdm(sorted(os.listdir(path+"real"))):
     real = io.imread(path+"real/"+filename)
     fake = io.imread(path+"fake/"+filename)
     s = ssim(real, fake, multichannel=True, data_range=255)
+    p = psnr(real, fake, data_range=255)
         # print(s)
-    res += s
+    res_ssim += s
+    res_psnr += p
 
-print("Average SSIM:", res / n)
-
+print("Average SSIM:", res_ssim / n)
+print(f"Average PSNR: {res_psnr/n}")
 
 # for filename in tqdm(sorted(os.listdir(path))):
 #     if filename.find("real_B") != -1:
